@@ -1,0 +1,21 @@
+name: Echo Input Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      customprop:
+        description: "Custom property to echo"
+        required: true
+        default: "hello world"
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run local echo action
+        uses: ./read_customprops
+        with:
+          customprop: ${{ github.event.inputs.customprop }}
