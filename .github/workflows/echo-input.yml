@@ -15,7 +15,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run remote echo action
-        uses: shbali/read_customprops@main
-        with:
-          customprop: ${{ github.event.inputs.customprop }}
+      - name: Run local echo action
+        uses: ./read_customprops
